@@ -14,7 +14,8 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        //
+        $modules = Module::all();
+        return view('modules.index', ['modules' => $modules]);
     }
 
     /**
