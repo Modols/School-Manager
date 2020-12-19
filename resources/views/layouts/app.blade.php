@@ -9,6 +9,7 @@
 <body>
     @include('layouts.navbar')
     <div class="container">
+        <br>
         <h1>
             @yield('body-title')
         </h1>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Promotion;
+use App\Student;
 use Illuminate\Database\Seeder;
 
 class PromotionSeeder extends Seeder
@@ -12,7 +13,16 @@ class PromotionSeeder extends Seeder
      */
     public function run()
     {
-        factory(Promotion::class, 5)->create();
+        factory(Promotion::class, 5)->create()->each(function ($promotion){
+            $promotion->save();
+
+            factory(Student::class, 5)->create([
+                "promotion_id" => $promotion->id,
+            ]);
+
+        });
+
+        
 
     }
 }
