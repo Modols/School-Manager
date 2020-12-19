@@ -23,10 +23,9 @@ Promotion creation
         </div>
         <br>
 
-        {{-- <label for="rowModule" class="form-label">Your vanity URL</label> --}}
         <h3>Add module to promotion</h3>
         <br>
-        <div class="row" id="rowModule">
+        <div class="row" >
             @foreach ($modules as $module)
                 <div class="col-sm-4">
                     <div class="mb-3 form-check">
@@ -39,11 +38,25 @@ Promotion creation
         </div>
         <br>
 
+        <h3>Add Student to promotion</h3>
+        <br>
+        <div class="row" >
+            @foreach ($students as $student)
+                <div class="col-sm-4">
+                    <div class="mb-3 form-check">
+                        <label class="form-check-label" for="student-{{ $student->id }}">{{ $student->name }} {{ $student->firstName }}</label>
+                        <input type="checkbox" class="form-check-input" id="student-{{ $student->id }}"
+                                    value="{{ $student->id }}" name="students[]">
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        <br>
+        
+
         <button type="submit" class="btn btn-success">Create the promotion</button>
     </form>   
 
 @endsection
-
-
 
 

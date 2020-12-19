@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Promotion;
 use App\Module;
+use App\Student;
 use Illuminate\Http\Request;
 
 class PromotionController extends Controller
@@ -27,7 +28,11 @@ class PromotionController extends Controller
     public function create()
     {
         $modules = Module::all();
-        return view('promotions.create', ['modules' => $modules]);
+        $students = Student::whereNull('promotion_id')->get();
+
+        return view('promotions.create', 
+        ['modules' => $modules,
+         'students' => $students]);
     }
 
     /**
@@ -39,14 +44,24 @@ class PromotionController extends Controller
     public function store(Request $request)
     {
         $newPromotion = new Promotion();
-		$newPromotion->name = $request->name;
-		$newPromotion->speciality = $request->speciality;
-		$newPromotion->save();
+        $newPromotion->name = $request->name;
+        $newPromotion->speciality = $request->speciality;
+        $newPromotion->save();
 
-		$newPromotion->modules()->attach($request->modules);
+        $students = $request->students;
+        if(!(empty($students))){
+            foreach($students as $key => $value){
+                $student = Student::find($value);
+                $student->promotion_id = $newPromotion->id;
+                $student->modules()->attach($request->modules);
+                $student->save();
+            }
+        }
+        
 
-        return redirect(route('promotions.index'));
-        // print_r($request->all());
+        $newPromotion->modules()->attach($request->modules);
+
+        return redirect(route('promotions.show', ['promotion' => $newPromotion]));
     }
 
     /**
@@ -68,7 +83,12 @@ class PromotionController extends Controller
      */
     public function edit(Promotion $promotion)
     {
-        //
+        $modules = Module::all();
+        $students = Student::whereNull('promotion_id')->get();
+
+        return view('promotions.edit', [
+            'promotion' => $promotion,
+            'modules' => $modules]);
     }
 
     /**
