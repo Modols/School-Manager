@@ -23,7 +23,6 @@ Promotion Edit
         <input type="text" class="form-control form-control-lg" name="speciality"  placeholder="Entrer a promotion's speciality" value="{{$promotion->speciality}}" required>
     </div>
     
-    
     <div class="row">
         <div class="col-4">
             <h2 class="mb-5">List of all Module : </h2>
@@ -68,10 +67,7 @@ Promotion Edit
             </div>
         </div>
     </div>
-    
-    
-    
-    
+
     <button type="submit" class="btn btn-success">Modifier</button>
 </form>
 

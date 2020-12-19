@@ -23,7 +23,6 @@ Promotion List
                     <img src="https://media-exp1.licdn.com/dms/image/C4D0BAQEtPcuS0jOZwg/company-logo_200_200/0/1523001943274?e=2159024400&v=beta&t=fIaMqQiFChNjs325flIBsQ0p3JNvACKoatsoQzNvlWc" class="card-img-top" alt="Ynov Picture" >
                     <div class="card-body">
                         <h5 class="card-title mb-4">{{ $promotion->name }} | {{ $promotion->speciality }}</h5>
-                        {{-- {{count($promotion->students)}} --}}
                         <p class="card-text">This promotion contains {{count($promotion->modules)}} modules and {{count($promotion->students)}} students.</p>
                         <div class="row  ">
                             <div class="col-12 mb-2 ">

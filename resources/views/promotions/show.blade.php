@@ -40,7 +40,6 @@ Promotion Details
           <div class="col-md-8 text-center" style="margin-top: 10%">
             <div class="card-body">
               <h5 class="card-title">{{ $promotion->name }} | {{ $promotion->speciality }}</h5><br>
-              {{-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> --}}
               <p class="card-text"><small class="text-muted">Create the : {{ $promotion->created_at }}</small></p>
               <p class="card-text"><small class="text-muted">Updated the : {{ $promotion->updated_at }}</small></p>
             </div>
@@ -86,7 +85,7 @@ Promotion Details
         @endforeach
     </div>
 
-    <p>* Delete Everythings means delete the promotion and the promotion's students. </p>
+    <p>* Delete Everythings means delete the promotion and the promotion's students.</p>
 
 @endsection
 
