@@ -6,6 +6,7 @@ use App\Promotion;
 use App\Module;
 use App\Student;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class PromotionController extends Controller
 {
@@ -84,11 +85,12 @@ class PromotionController extends Controller
     public function edit(Promotion $promotion)
     {
         $modules = Module::all();
-        $students = Student::whereNull('promotion_id')->get();
+        $freeStudents = Student::whereNull('promotion_id')->get();
 
         return view('promotions.edit', [
             'promotion' => $promotion,
-            'modules' => $modules]);
+            'modules' => $modules,
+            'freeStudents' => $freeStudents]);
     }
 
     /**
@@ -100,7 +102,26 @@ class PromotionController extends Controller
      */
     public function update(Request $request, Promotion $promotion)
     {
-        //
+        $promotion->students()->each(function ($student) {
+            $student->promotion_id = NULL;
+            $student->push();
+        });
+        $students = $request->students;
+
+        if(!(empty($students))){
+            foreach($students as $key => $value){
+                $student = Student::find($value);
+                $student->promotion_id = $promotion->id;
+                // $student->modules()->attach($request->modules);
+                $student->push();
+            }
+        }
+        $promotion->modules()->detach();
+		$promotion->modules()->attach($request->modules);
+
+
+        // print_r($request->all());
+        return redirect(route('promotions.show', ['promotion' => $promotion]));
     }
 
     /**
@@ -109,8 +130,22 @@ class PromotionController extends Controller
      * @param  \App\Promotion  $promotion
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Promotion $promotion)
+    public function destroy(Promotion $promotion, Request $request)
     {
-        //
+        // print_r($request->all());
+        
+        $promotion->delete();
+        $promotion->modules()->detach();
+
+        if(isset($request->deleteAll)){
+            $promotion->students()->delete();
+        }else{
+            $promotion->students()->each(function ($student) {
+                $student->promotion_id = NULL;
+                $student->push();
+            });
+        }
+
+        return redirect(route('promotions.index'));
     }
 }

@@ -25,15 +25,19 @@ Promotion List
                         <h5 class="card-title mb-4">{{ $promotion->name }} | {{ $promotion->speciality }}</h5>
                         {{-- {{count($promotion->students)}} --}}
                         <p class="card-text">This promotion contains {{count($promotion->modules)}} modules and {{count($promotion->students)}} students.</p>
-                        <div class="row mb-4">
-                            <div class="col-4">
-                                <a href="{{ route('promotions.show', ['promotion' => $promotion]) }}" class=" btn btn-info text-white">Details</a>
+                        <div class="row  ">
+                            <div class="col-12 mb-2 ">
+                                <a href="{{ route('promotions.show', ['promotion' => $promotion]) }}" class="d-block btn btn-info text-white">Details</a>
                             </div>
-                            <div class="col-4 ">
-                                <a href="{{ route('promotions.edit', ['promotion' => $promotion]) }}" class="d-fle btn btn-success text-white">Edit</a>
+                            <div class="col-12 mb-2 ">
+                                <a href="{{ route('promotions.edit', ['promotion' => $promotion]) }}" class="d-block btn btn-success text-white">Edit</a>
                             </div>
-                            <div class="col-4 ">
-                                <a href="#" class=" btn btn-danger text-white">Delete</a>
+                            <div class="col-12">
+                                <form class="" method="POST" action="{{route('promotions.destroy', ['promotion' => $promotion] )}}">
+                                    @method("DELETE")
+                                    @csrf
+                                    <a class="d-block btn btn-danger text-white">Delete</a>
+                                </form>
                             </div>
                         </div>
                     </div>

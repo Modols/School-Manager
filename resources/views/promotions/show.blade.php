@@ -13,8 +13,23 @@ Promotion Details
 @section('content')
     <br>
     <div class="d-flex flex-row-reverse mb-3">
-        <a class="btn btn-danger text-white" style="margin-left: 4px" href="{{ route('promotions.create') }}">Delete</a>
-        <a class="btn btn-success text-white"  href="{{ route('promotions.edit', ['promotion' => $promotion]) }}">Edit</a>
+        <div>
+            <a class="btn btn-success text-white"  href="{{ route('promotions.edit', ['promotion' => $promotion]) }}">Edit</a>
+        </div>
+        <div>
+            <form method="POST" action="{{route('promotions.destroy', ['promotion' => $promotion] )}}" style="margin-right: 10px">
+                @method("DELETE")
+                @csrf
+                <button class=" btn btn-danger text-white">Delete</button>
+            </form>
+        </div>
+        <div>
+            <form method="POST" action="{{route('promotions.destroy', ['promotion' => $promotion, 'deleteAll' => 'true'] )}}" style="margin-right: 10px">
+                @method("DELETE")
+                @csrf
+                <button class=" btn btn-danger text-white">Delete Everythings *</button>
+            </form>
+        </div>
     </div>
 
     <div class="card mb-4" >
@@ -56,7 +71,7 @@ Promotion Details
         <h2 class="mb-4">List of Students : </h2>
     @endif
 
-    <div class="row">
+    <div class="row mb-4">
         @foreach ( $promotion->students as $student)
             <div class="col-xl-4 mb-4 text-center">
                 <div class="card" style="width: 20rem;">
@@ -70,6 +85,8 @@ Promotion Details
             </div>
         @endforeach
     </div>
+
+    <p>* Delete Everythings means delete the promotion and the promotion's students. </p>
 
 @endsection
 
