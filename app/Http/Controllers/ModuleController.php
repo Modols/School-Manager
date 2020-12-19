@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Module;
+use App\Promotion;
+use App\Student;
 use Illuminate\Http\Request;
 
 class ModuleController extends Controller
@@ -25,7 +27,8 @@ class ModuleController extends Controller
      */
     public function create()
     {
-        //
+        $promotions = Promotion::all();
+        return view('modules.create', ['promotions' => $promotions]);
     }
 
     /**
@@ -36,7 +39,22 @@ class ModuleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newModule = new Module();
+        $newModule->name = $request->name;
+        $newModule->description = $request->description;
+        $newModule->save();
+
+        $promotions = $request->promotions;
+        if(!(empty($promotions))){
+            foreach($promotions as $key => $value){
+                $promotion = Promotion::find($value);
+                $students = Student::where('promotion_id', '=', $promotion->id)->get();
+
+                $newModule->students()->attach($students);
+                $newModule->promotions()->attach($promotion);
+            }
+        }
+        return redirect(route('modules.index'));
     }
 
     /**

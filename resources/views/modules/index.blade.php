@@ -17,20 +17,21 @@ Module List
     <br>
 
     <div class="row">
-         @foreach ( $modules as $module)
-            <div class="col-sm-6 mb-4">
-                <div class="card text-center ">
+        @foreach ( $modules as $module)
+        {{-- {{ print_r( $module->promotions->students ) }} --}}
+        <div class="col-sm-6 mb-4">
+            <div class="card text-center ">
                 <div class="card-body">
                     <h5 class="card-title">{{ $module->name }}</h5>
                     <p class="card-text">{{ $module->description }}<br/>
-                    This module is in {{ count($module->promotions) }} promotions and {{ count($module->students) }} students are registered.</p>
-                    {{-- {{ print_r(count($module->promotions)) }} --}}
+                        This module is in {{ count($module->promotions) }} promotions and {{ count($module->students) }} students are registered.
+                    </p>
                     <div class="row">
                         <div class="col-4">
-                            <a href="#" class="d-block btn btn-info text-white">Detail</a>
+                            <a href="{{route('modules.show', ['module' => $module] )}}" class="d-block btn btn-info text-white">Detail</a>
                         </div>
                         <div class="col-4">
-                            <a href="#" class="d-block btn btn-success text-white">Edit</a>
+                            <a href="{{route('modules.edit', ['module' => $module] )}}" class="d-block btn btn-success text-white">Edit</a>
                         </div>
                         <div class="col-4">
                             <form class="" method="POST" action="{{route('modules.destroy', ['module' => $module] )}}">
@@ -41,8 +42,8 @@ Module List
                         </div>
                     </div>
                 </div>
-                </div>
             </div>
+        </div>
         @endforeach
     </div>
 @endsection
