@@ -12,5 +12,3 @@ $factory->define(Module::class, function (Faker $faker) {
     ];
 });
 
-// $table->string('name');
-// $table->string('description');
