@@ -22,7 +22,7 @@
                         </div>
                     </div>
                 @else
-                    <a href="{{ route('students.show', ['student' => $item]) }}" class=" btn btn-info text-white">Detail</a>
+                    <a href="{{ route('students.show', ['student' => $item]) }}" class=" btn btn-info text-white btn-lg">Detail</a>
                 @endif
             </div>
         </div>

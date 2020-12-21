@@ -15,8 +15,11 @@
         </h1>
         <br>
         @yield('content')
-    </div><br>
-    <footer class="footer mt-auto py-3 bg-dark">
+    </div><br class="mb-5">
+    <br class="mb-5">
+    <br class="mb-5">
+    <br class="mb-5">
+    <footer class="footer fixed-bottom mt-auto py-3 bg-dark">
         <div class="container">
             <div class="row">
                 <div class="col-8">
