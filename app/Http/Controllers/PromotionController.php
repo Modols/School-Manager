@@ -141,13 +141,14 @@ class PromotionController extends Controller
      */
     public function destroy(Promotion $promotion, Request $request)
     {
-        // print_r($request->all());
-        
         $promotion->delete();
         $promotion->modules()->detach();
 
         if(isset($request->deleteAll)){
-            $promotion->students()->delete();
+            $promotion->students()->each(function($student){
+                $student->modules()->detach();
+                $student->delete();
+            });
         }else{
             $promotion->students()->each(function ($student) {
                 $student->modules()->detach();
@@ -155,8 +156,6 @@ class PromotionController extends Controller
                 $student->push();
             });
         }
-
-        // $promotion->students()->detach();
 
         return redirect(route('promotions.index'));
     }
