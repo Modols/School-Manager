@@ -19,3 +19,4 @@ Route::get('/', function () {
 
 Route::resource("promotions", "PromotionController");
 Route::resource("modules", "ModuleController");
+Route::resource("students", "StudentController");

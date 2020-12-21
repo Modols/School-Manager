@@ -29,7 +29,7 @@ Promotion List
                         <p class="card-text">This promotion contains {{count($promotion->modules)}} modules and {{count($promotion->students)}} students.</p>
                         <div class="row  ">
                             <div class="col-12 mb-2 ">
-                                <a href="{{ route('promotions.show', ['promotion' => $promotion]) }}" class="d-block btn btn-info text-white">Details</a>
+                                <a href="{{ route('promotions.show', ['promotion' => $promotion]) }}" class="d-block btn btn-info text-white">Detail</a>
                             </div>
                             <div class="col-12 mb-2 ">
                                 <a href="{{ route('promotions.edit', ['promotion' => $promotion]) }}" class="d-block btn btn-success text-white">Edit</a>

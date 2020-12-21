@@ -12,6 +12,9 @@
           <li class="nav-item">
             <a class="nav-link active" href="{{ route('modules.index') }}">Module Manager</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="{{ route('students.index') }}">Student Manager</a>
+          </li>
         </ul>
         <form class="d-flex" style="margin-top: 10px">
           <input class="form-control me-2" name='search' type="search" placeholder="Search" aria-label="Search">
