@@ -6,7 +6,6 @@ use App\Promotion;
 use App\Module;
 use App\Student;
 use Illuminate\Http\Request;
-use phpDocumentor\Reflection\Types\Boolean;
 
 class PromotionController extends Controller
 {
@@ -15,10 +14,15 @@ class PromotionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $promotions = Promotion::all();
-        return view('promotions.index', ['promotions' => $promotions]);
+        $search = $request->search;
+        if (!(empty($search))) {
+            $promotions = Promotion::where('name', 'like', '%' . $search . '%')
+            ->get();
+        }
+        return view('promotions.index', ['promotions' => $promotions, 'search' => $search]);
     }
 
     /**
@@ -102,6 +106,11 @@ class PromotionController extends Controller
      */
     public function update(Request $request, Promotion $promotion)
     {
+        $promotionUpdate = Promotion::find($promotion->id);
+        $promotionUpdate->name = $request->name;
+        $promotionUpdate->speciality = $request->speciality;
+        $promotionUpdate->save();
+
         $promotion->students()->each(function ($student) {
             $student->promotion_id = NULL;
             $student->push();
@@ -111,16 +120,16 @@ class PromotionController extends Controller
         if(!(empty($students))){
             foreach($students as $key => $value){
                 $student = Student::find($value);
+                $student->modules()->detach();
+                $student->modules()->attach($request->modules);
                 $student->promotion_id = $promotion->id;
-                // $student->modules()->attach($request->modules);
                 $student->push();
             }
         }
+
         $promotion->modules()->detach();
 		$promotion->modules()->attach($request->modules);
 
-
-        // print_r($request->all());
         return redirect(route('promotions.show', ['promotion' => $promotion]));
     }
 
@@ -141,10 +150,13 @@ class PromotionController extends Controller
             $promotion->students()->delete();
         }else{
             $promotion->students()->each(function ($student) {
+                $student->modules()->detach();
                 $student->promotion_id = NULL;
                 $student->push();
             });
         }
+
+        // $promotion->students()->detach();
 
         return redirect(route('promotions.index'));
     }

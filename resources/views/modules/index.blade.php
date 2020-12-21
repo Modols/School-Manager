@@ -8,17 +8,18 @@ Module List
 Module List 
 @endsection
 
-
-
 @section('content')
     <div class="d-flex flex-row-reverse mb-4">
         <a class="btn btn-info text-white" href="{{ route('modules.create') }}">Create Module</a>
     </div>
     <br>
 
+    @if($search)
+        <h2>Search result for "{{ $search }}" : </h2>
+    @endif
+
     <div class="row">
         @foreach ( $modules as $module)
-        {{-- {{ print_r( $module->promotions->students ) }} --}}
         <div class="col-sm-6 mb-4">
             <div class="card text-center ">
                 <div class="card-body">
@@ -34,10 +35,10 @@ Module List
                             <a href="{{route('modules.edit', ['module' => $module] )}}" class="d-block btn btn-success text-white">Edit</a>
                         </div>
                         <div class="col-4">
-                            <form class="" method="POST" action="{{route('modules.destroy', ['module' => $module] )}}">
+                            <form class="d-grid" method="POST" action="{{route('modules.destroy', ['module' => $module] )}}">
                                 @method("DELETE")
                                 @csrf
-                                <a class="d-block btn btn-danger text-white">Delete</a>
+                                <button type="submit" class="d-block btn btn-danger text-white">Delete</button>
                             </form>
                         </div>
                     </div>

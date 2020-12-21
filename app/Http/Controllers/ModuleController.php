@@ -14,10 +14,15 @@ class ModuleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $modules = Module::all();
-        return view('modules.index', ['modules' => $modules]);
+        $search = $request->search;
+        if (!(empty($search))) {
+            $modules = Module::where('name', 'like', '%' . $search . '%')
+            ->get();
+        }
+        return view('modules.index', ['modules' => $modules, 'search' => $search]);
     }
 
     /**
@@ -65,7 +70,7 @@ class ModuleController extends Controller
      */
     public function show(Module $module)
     {
-        //
+        return view('modules.show', ['module' => $module]);
     }
 
     /**
@@ -76,7 +81,13 @@ class ModuleController extends Controller
      */
     public function edit(Module $module)
     {
-        //
+        $promotions = Promotion::all();
+        $freeStudents = Student::whereNull('promotion_id')->get();
+
+        return view('modules.edit', 
+        ['module' => $module, 
+        'promotions' => $promotions,
+        'freeStudents' => $freeStudents]);
     }
 
     /**
@@ -88,7 +99,31 @@ class ModuleController extends Controller
      */
     public function update(Request $request, Module $module)
     {
-        //
+        $moduleUpdate = Module::find($module->id);
+        $moduleUpdate->name = $request->name;
+        $moduleUpdate->description = $request->description;
+        $moduleUpdate->save();
+
+        if (isset($module->promotions[0])){
+            foreach($moduleUpdate->promotions as $key =>$value){
+                $promotion = Promotion::find($value->id);
+                $students = Student::where('promotion_id', '=', $promotion->id)->get();
+                $moduleUpdate->students()->detach($students);
+                $moduleUpdate->promotions()->detach($promotion);
+            };
+        }
+        
+        $promotions = $request->promotions;
+        if(!(empty($promotions))){
+            foreach($promotions as $key => $value){
+                $promotion = Promotion::find($value);
+                $students = Student::where('promotion_id', '=', $promotion->id)->get();
+                $moduleUpdate->students()->attach($students);
+                $moduleUpdate->promotions()->attach($promotion);
+            }
+        }
+
+        return redirect(route('modules.show', ['module' => $moduleUpdate]));
     }
 
     /**
@@ -99,6 +134,9 @@ class ModuleController extends Controller
      */
     public function destroy(Module $module)
     {
-        //
+        $module->promotions()->detach();
+        $module->students()->detach();
+        $module->delete();
+        return redirect(route('modules.index'));
     }
 }

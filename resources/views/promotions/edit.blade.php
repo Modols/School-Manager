@@ -48,7 +48,7 @@ Promotion Edit
                     <div class="col-5 mb-4 form-check" style="margin-left: 20px">
                         <input type="checkbox" class="form-check-input" id="student-{{ $student->id }}"
                         value="{{ $student->id }}" name="students[]" checked >
-                        <label class="form-check-label" for="student-{{ $student->id }}">{{ $student->name }}</label>
+                        <label class="form-check-label" for="student-{{ $student->id }}">{{ $student->name }} {{ $student->firstName }}</label>
                     </div>
                 @endforeach
             </div>
@@ -61,14 +61,14 @@ Promotion Edit
                     <div class="col-5 mb-4 form-check" style="margin-left: 20px">
                         <input type="checkbox" class="form-check-input" id="student-{{ $freeStudent->id }}"
                         value="{{ $freeStudent->id }}" name="students[]"  >
-                        <label class="form-check-label" for="student-{{ $freeStudent->id }}">{{ $freeStudent->name }}</label>
+                        <label class="form-check-label" for="student-{{ $freeStudent->id }}">{{ $freeStudent->name }} {{ $freeStudent->firstName }}</label>
                     </div>
                 @endforeach
             </div>
         </div>
     </div>
 
-    <button type="submit" class="btn btn-success">Modifier</button>
+    <button type="submit" class="btn btn-success">Edit this Promotion</button>
 </form>
 
 

@@ -8,12 +8,11 @@ Module Creation
 Module Creation 
 @endsection
 
-
-
 @section('content')
     <br>
     <form method="POST"  action="{{ route("modules.store") }}" >
         @csrf
+        
         <div class="mb-3">
             <label for="name" style="font-size: 20px">Module's Name :</label>
             <input type="text" class="form-control form-control-lg" name="name"  placeholder="Entrer a promotion's name" required>
@@ -41,21 +40,6 @@ Module Creation
         </div>
         <br>
 
-        {{-- <h3>Add Student to module : </h3>
-        <br>
-        <div class="row" >
-            @foreach ($students as $student)
-                <div class="col-sm-4">
-                    <div class="mb-3 form-check">
-                        <label class="form-check-label" for="student-{{ $student->id }}">{{ $student->name }} {{ $student->firstName }}</label>
-                        <input type="checkbox" class="form-check-input" id="student-{{ $student->id }}"
-                                    value="{{ $student->id }}" name="students[]">
-                    </div>
-                </div>
-            @endforeach
-        </div>
-        <br> --}}
-        
         <button type="submit" class="btn btn-success">Create the Module</button>
     </form>   
 

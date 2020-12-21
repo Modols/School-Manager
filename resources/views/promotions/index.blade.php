@@ -15,6 +15,9 @@ Promotion List
         <a class="btn btn-info text-white" href="{{ route('promotions.create') }}">Create Promotion</a>
     </div>
     <br>
+    @if($search)
+        <h2>Search result for "{{ $search }}" : </h2>
+    @endif
 
     <div class="row">
         @foreach ( $promotions as $promotion)
