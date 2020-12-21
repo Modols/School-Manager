@@ -34,11 +34,11 @@ Promotion List
                             <div class="col-12 mb-2 ">
                                 <a href="{{ route('promotions.edit', ['promotion' => $promotion]) }}" class="d-block btn btn-success text-white">Edit</a>
                             </div>
-                            <div class="col-12">
-                                <form class="" method="POST" action="{{route('promotions.destroy', ['promotion' => $promotion] )}}">
+                            <div class="col-12 ">
+                                <form class="d-grid" method="POST" action="{{route('promotions.destroy', ['promotion' => $promotion] )}}">
                                     @method("DELETE")
                                     @csrf
-                                    <a class="d-block btn btn-danger text-white">Delete</a>
+                                    <button type="submit" class="d-block btn btn-danger text-white">Delete</button>
                                 </form>
                             </div>
                         </div>

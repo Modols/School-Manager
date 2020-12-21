@@ -14,10 +14,10 @@
                             <a href="{{ route('students.edit', ['student' => $item]) }}" class="d-block btn btn-success text-white">Edit</a>
                         </div>
                         <div class="col-12">
-                            <form class="" method="POST" action="{{route('students.destroy', ['student' => $item] )}}">
+                            <form class="d-grid" method="POST" action="{{route('students.destroy', ['student' => $item] )}}">
                                 @method("DELETE")
                                 @csrf
-                                <a class="d-block btn btn-danger text-white">Delete</a>
+                                <button class=" btn btn-danger text-white">Delete</button>
                             </form>
                         </div>
                     </div>

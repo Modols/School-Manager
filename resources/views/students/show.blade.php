@@ -51,7 +51,8 @@ Student Detail
               <div class="card-body">
                 <h5 class="card-title">{{ $student->promotion->name }} | {{ $student->promotion->speciality }}</h5><br>
                 <p class="card-text"><small class="text-muted">Create the : {{ $student->promotion ->created_at }}</small></p>
-                <p class="card-text"><small class="text-muted">Updated the : {{ $student->promotion->updated_at }}</small></p>
+                <p class="card-text mb-5"><small class="text-muted">Updated the : {{ $student->promotion->updated_at }}</small></p>
+                <a href="{{route('promotions.show', ['promotion'=>$student->promotion])}}" class="btn btn-info text-white">Detail</a>
               </div>
             </div>
           </div>

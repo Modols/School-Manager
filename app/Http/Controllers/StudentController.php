@@ -31,14 +31,6 @@ class StudentController extends Controller
 
         $freestudents = Student::whereNull('promotion_id')->get();
 
-        // foreach($arrayStudent as $key => $value){
-        //     print_r($value['promotionNameSpeciality']);
-            
-        //     foreach($value['student'] as $k =>$v){
-        //         print_r($v->name);
-        //         // print_r($v->promotion_id);
-        //     };
-        // }
         $students='';
         $search = $request->search;
         if (!(empty($search))) {
@@ -74,7 +66,6 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        // print_r($request->all());
         $newStudent = new Student();
         $newStudent->name = $request->name;
         $newStudent->firstName = $request->firstName;
@@ -83,9 +74,8 @@ class StudentController extends Controller
         $newStudent->save();
 
         if(isset($request->promotion)){
+            $promotion = Promotion::find($request->promotion);
             if(isset($request->modules)){
-                // on a une promotion et des modules
-                $promotion = Promotion::find($request->promotion);
                 $modulesOfPromotion = $promotion->modules;
                 $modulesOfInputs = $request->modules;
 
@@ -101,14 +91,11 @@ class StudentController extends Controller
                 }
 
             }else{
-                // on a seulement une promotion
-                $promotion = Promotion::find($request->promotion);
                 $newStudent->modules()->attach($promotion->modules());
             }
         
         }
         elseif(isset($request->modules)){
-            // on a juste des modules
             $newStudent->modules()->attach($request->modules);
         }
 
@@ -177,6 +164,8 @@ class StudentController extends Controller
      */
     public function destroy(Student $student)
     {
-        //
+        $student->modules()->detach();
+        $student->delete();
+        return redirect(route('students.index'));
     }
 }
