@@ -27,7 +27,7 @@ Module Detail
         
         <h2 >List of all Promotions* : </h2>
         <p class="mb-5"><small>* Add a module to a promotion will add all promotion's students</small></p>
-        <div class="row">
+        <div class="row mb-3">
             @foreach($promotions as $promotion)
                 <div class="col mb-4 form-check" >
                     <input type="checkbox" class="form-check-input" id="promotion-{{ $promotion->id }}"
@@ -41,7 +41,7 @@ Module Detail
             @endforeach
         </div>
         
-        <button type="submit" class="btn btn-success">Edit this Module</button>
+        <button type="submit" class="btn btn-lg btn-success">Edit this Module</button>
     </form> 
 
 @endsection

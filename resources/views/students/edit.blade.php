@@ -71,7 +71,7 @@ Students Edit
         </div>
         <br>
         
-        <button type="submit" class="btn btn-success">Edit this Student</button>
+        <button type="submit" class="btn btn-lg btn-success">Edit this Student</button>
     </form>   
 
 @endsection

@@ -28,7 +28,9 @@ Students Creation
         </div>
         <br>
 
-        <h3>Add this Student to a Promotion :</h3>
+        <h3>Add this Student to a Promotion* :</h3>
+        <p><small>* Add a student to a promotion will add all promotion's module to the student and you can add aditional module.</small></p>
+
         <br>
         <div class="row" >
             @foreach ($promotions as $promotion)
@@ -58,7 +60,7 @@ Students Creation
         </div>
         <br>
         
-        <button type="submit" class="btn btn-success">Create the Student</button>
+        <button type="submit" class="btn btn-lg btn-success">Create the Student</button>
     </form>   
 
 @endsection

@@ -4,7 +4,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $module->name }}</h5>
                 <p class="card-text">{{ $module->description }}</p>
-                <a href="{{route('modules.show', ['module' => $module] )}}" class=" btn btn-info text-white">Detail</a>
+                <a href="{{route('modules.show', ['module' => $module] )}}" class=" btn btn-lg btn-info text-white">Detail</a>
             </div>
         </div>
     </div>

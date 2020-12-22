@@ -13,20 +13,20 @@ Module Detail
     <br>
     <div class="d-flex flex-row-reverse mb-3">
         <div>
-            <a class="btn btn-success text-white"  href="{{ route('modules.edit', ['module' => $module]) }}">Edit</a>
+            <a class="btn btn-lg btn-success text-white"  href="{{ route('modules.edit', ['module' => $module]) }}">Edit</a>
         </div>
         <div>
             <form method="POST" action="{{route('modules.destroy', ['module' => $module] )}}" style="margin-right: 10px">
                 @method("DELETE")
                 @csrf
-                <button class=" btn btn-danger text-white">Delete</button>
+                <button class=" btn btn-lg btn-danger text-white">Delete</button>
             </form>
         </div>
     </div>
      
-    <div class="card text-center mb-3">
+    <div class="card text-center mb-3 " style="font-size: 18px">
         <div class="card-body mb-2">
-          <h5 class="card-title ">{{ $module->name }}</h5>
+          <h5 class="card-title mb-3" style="font-size: 30px">{{ $module->name }}</h5>
           <p class="card-text">{{ $module->description }}</p>
         </div>
         <div class="card-footer text-muted">

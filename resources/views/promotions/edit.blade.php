@@ -18,7 +18,7 @@ Promotion Edit
         <input type="text" class="form-control form-control-lg" name="name" placeholder="Entrer a promotion's name" value="{{$promotion->name}}" required>
     </div>
     
-    <div class="mb-3">
+    <div class="mb-5">
         <label for="speciality" style="font-size: 20px">Promotion's speciality :</label>
         <input type="text" class="form-control form-control-lg" name="speciality"  placeholder="Entrer a promotion's speciality" value="{{$promotion->speciality}}" required>
     </div>
@@ -68,7 +68,7 @@ Promotion Edit
         </div>
     </div>
 
-    <button type="submit" class="btn btn-success">Edit this Promotion</button>
+    <button type="submit" class="btn btn-lg btn-success">Edit this Promotion</button>
 </form>
 
 

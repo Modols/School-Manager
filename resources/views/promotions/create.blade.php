@@ -53,7 +53,7 @@ Promotion Creation
         </div>
         <br>
         
-        <button type="submit" class="btn btn-success">Create the promotion</button>
+        <button type="submit" class="btn btn-lg btn-success">Create the promotion</button>
     </form>   
 
 @endsection

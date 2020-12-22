@@ -14,25 +14,25 @@ Promotion Detail
     <br>
     <div class="d-flex flex-row-reverse mb-3">
         <div>
-            <a class="btn btn-success text-white"  href="{{ route('promotions.edit', ['promotion' => $promotion]) }}">Edit</a>
+            <a class="btn btn-lg btn-success text-white"  href="{{ route('promotions.edit', ['promotion' => $promotion]) }}">Edit</a>
         </div>
         <div>
             <form method="POST" action="{{route('promotions.destroy', ['promotion' => $promotion] )}}" style="margin-right: 10px">
                 @method("DELETE")
                 @csrf
-                <button class=" btn btn-danger text-white">Delete</button>
+                <button class=" btn btn-lg btn-danger text-white">Delete</button>
             </form>
         </div>
         <div>
             <form method="POST" action="{{route('promotions.destroy', ['promotion' => $promotion, 'deleteAll' => 'true'] )}}" style="margin-right: 10px">
                 @method("DELETE")
                 @csrf
-                <button class=" btn btn-danger text-white">Delete Everythings *</button>
+                <button class=" btn btn-lg btn-danger text-white">Delete Everythings *</button>
             </form>
         </div>
     </div>
 
-    <div class="card mb-4" >
+    <div class="card mb-4 " style="font-size: 24px" >
         <div class="row g-0">
           <div class="col-md-4">
             <img src="https://media-exp1.licdn.com/dms/image/C4D0BAQEtPcuS0jOZwg/company-logo_200_200/0/1523001943274?e=2159024400&v=beta&t=fIaMqQiFChNjs325flIBsQ0p3JNvACKoatsoQzNvlWc" class="card-img-top" alt="Ynov Picture" >

@@ -12,7 +12,7 @@ Promotion List
 
 @section('content')
     <div class="d-flex flex-row-reverse">
-        <a class="btn btn-info text-white" href="{{ route('promotions.create') }}">Create Promotion</a>
+        <a class="btn btn-info text-white btn-lg" href="{{ route('promotions.create') }}">Create Promotion</a>
     </div>
     <br>
     @if($search)

@@ -10,7 +10,7 @@ Module List
 
 @section('content')
     <div class="d-flex flex-row-reverse mb-4">
-        <a class="btn btn-info text-white" href="{{ route('modules.create') }}">Create Module</a>
+        <a class="btn btn-lg btn-info text-white" href="{{ route('modules.create') }}">Create Module</a>
     </div>
     <br>
 

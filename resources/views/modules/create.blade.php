@@ -40,7 +40,7 @@ Module Creation
         </div>
         <br>
 
-        <button type="submit" class="btn btn-success">Create the Module</button>
+        <button type="submit" class="btn btn-lg btn-success">Create the Module</button>
     </form>   
 
 @endsection

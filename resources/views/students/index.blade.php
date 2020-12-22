@@ -10,7 +10,7 @@ Student List
 
 @section('content')
     <div class="d-flex flex-row-reverse">
-        <a class="btn btn-info text-white" href="{{ route('students.create') }}">Create Student</a>
+        <a class="btn btn-lg btn-info text-white" href="{{ route('students.create') }}">Create Student</a>
     </div>
     <br>
     
