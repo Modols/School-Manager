@@ -1,61 +1,39 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<p align="center" style='font-size: 50px;'>School Manager</p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+<p align='center'>Voila mon projet de gestion d'ecole, vous y retrouverait une gestion des promotions, des modules et des etudiants.</p>
+<p align='center'>Ce site a etait pense pour une utilisation rapide et fluide.</p>
+<br>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Promotion Manager
+<br>
+<p >Dans cette section, vous trouverez une liste de toutes les promotions, une page detail ou vous pouvez voir la liste des eleves et des modules dans la promotion.</p>
+<p>Une page de creation ainsi que de modification sont presentes.</p>
+<p>Sur la page de creation, il vous sera possible de choisir des module ainsi que des eleves qui ne sont pas assigner a une promotion.</p>
+<p>Sur la page de Modification, ont retrouvera la liste des modules, la liste des eleves present dans la promotion ainsi que une liste des eleves sans promotions que vous pourrait ajouter.</p>
+<p>Sur la page detail d'une promotion, vous pourrait voir qu'il y a deux types de suppression, un type 'delete' qui supprimera la promotion, retirera la promotion a l'eleve et retirera le lien au module.</p>
+<p>Le second type est 'delete evrything' qui lui va detruire la promotion ainsi que tous les eleves qui s'y trouvent. Seuls les modules ne seront pas detruit.</p>
+<br>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Module Manager
+<br>
+<p >Dans cette section, vous trouverez une liste de tous les modules, une page detail ou vous pouvez voir la liste des eleves et des promotions.</p>
+<p>Une page de creation ainsi que de modification sont presentes.</p>
+<p>Sur la page de creation, afin que l'experience d'utilisation soit la plus rapide et la plus fluide possible, vous pourrait ajouter seulement des modules. Cependant, lorsque vous ajouterait un module, tous les eleves recevront le module qui vous avez choisi. Ont peut l'utiliser comme un outils pour faciliter un tron commun de module.</p>
+<p>La page Edit reprend le meme principe.</p>
+<br>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Student Manager
+<br>
+<p >Dans cette section, vous trouverez une liste de tous les eleves tries par promotion, une page detail ou vous pouvez voir la liste des modules et des promotions de l'eleve.</p>
+<p>Une page de creation ainsi que de modification sont presentes.</p>
+<p>Encore une fois, la page creation est un peu speciale. En effet, vous pouvez choisir si l'eleve que vous creez va rentrer dans une promotion. Si vous choissisez une promotion, tous les modules de cette promotion vont lui etre assigne. Si vous voulez ajouter des modules en supplement comme pour une option, vous avez une liste des modules que vous pouvez lui assigner. Pas de panique, vous ne pouvez pas ajouter plusiseurs fois le meme module au meme eleve.</p>
+<p>La page de modification quant a elle est classique, vous pouvez selectionner 'No Promotion' afin d'enlever un eleve de la promotion ou le changer de promotion.</p>
+<br>
 
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Systeme de recherche 
+<br>
+<p>Un systeme de recherche est present sur toutes les pages de listing.</p>
+<p>Vous pouvez rechercher sur la page de promotion toutes les promotions par nom.</p>
+<p>De meme sur la page module.</p>
+<p>Meme principe avec la page eleve, sauf que l'ont peut rechercher avec le nom, le prenom ainsi que l'email de l'eleve.</p>
